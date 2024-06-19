@@ -46,7 +46,6 @@ resources:
 
   extensions:
     WebAppS3BucketPolicy:
-      Type: AWS::S3::BucketPolicy
       Properties:
         Bucket: !Ref WebAppS3Bucket
         PolicyDocument:
