@@ -64,13 +64,10 @@ resources:
       Properties:
         DistributionConfig:
           Origins:
-            - Id: WebApp
-              S3OriginConfig:
-                OriginAccessIdentity: !Join
-                  - /
-                  - - origin-access-identity
-                    - cloudfront
-                    - !Ref OriginAccessIdentity
+        - Id: WebApp
+          DomainName: !GetAtt WebAppS3Bucket.DomainName
+          S3OriginConfig:
+            OriginAccessIdentity: !Join [ "/", [ "origin-access-identity/cloudfront", !Ref OriginAccessIdentity ] ]
           Enabled: true
           HttpVersion: http2
           Comment: Serverless Managed ${self:provider.stage}-${self:service}
