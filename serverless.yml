@@ -59,7 +59,6 @@ resources:
 
 
     ApiDistribution:
-      Type: AWS::CloudFront::Distribution
       Properties:
         DistributionConfig:
           Origins:
