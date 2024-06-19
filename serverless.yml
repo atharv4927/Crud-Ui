@@ -76,9 +76,6 @@ resources:
           Enabled: true
           HttpVersion: http2
           Comment: Serverless Managed ${self:provider.stage}-${self:service}
-          Aliases:
-            - ${self:custom.${self:provider.stage}.domain}
-          PriceClass: PriceClass_All
           DefaultRootObject: index.html
           DefaultCacheBehavior:
             AllowedMethods:
