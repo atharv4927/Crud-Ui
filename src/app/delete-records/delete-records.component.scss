@@ -1,0 +1,18 @@
+/* Styling for the delete button and input field */
+.delete-button {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  width: 200px;
+}
+
