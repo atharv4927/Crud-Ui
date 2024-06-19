@@ -98,7 +98,7 @@ plugins:
 custom:
   fullstack:
     bucketName: ${self:service}
-    distributionFolder: /dist/crud-ui
+    distributionFolder: /dist/crud-ui/browser
     indexDocument: index.html
     errorDocument: index.html
     compressWebContent: true
