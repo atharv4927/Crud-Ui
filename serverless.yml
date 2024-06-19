@@ -65,7 +65,6 @@ resources:
         DistributionConfig:
           Origins:
             - Id: WebApp
-              DomainName: !GetAtt WebAppS3Bucket.DomainName
               S3OriginConfig:
                 OriginAccessIdentity: !Join
                   - /
