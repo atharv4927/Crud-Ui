@@ -1,0 +1,16 @@
+/* Styling for the records table */
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.records-table th, .records-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.records-table th {
+  background-color: #f2f2f2;
+}
