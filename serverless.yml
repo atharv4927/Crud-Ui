@@ -75,7 +75,7 @@ resources:
           Enabled: true
           HttpVersion: http2
           Comment: Serverless Managed ${self:provider.stage}-${self:service}
-            PriceClass: PriceClass_All
+          PriceClass: PriceClass_All
           DefaultRootObject: index.html
           DefaultCacheBehavior:
             AllowedMethods:
