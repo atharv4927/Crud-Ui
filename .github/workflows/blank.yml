@@ -1,0 +1,38 @@
+name: Deploy Crud-ui
+
+on:
+  push:
+    branches:
+      - dev
+env:
+  deployment: dev
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Setup Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.x"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      # Step 4: Install Serverless Framework globally
+      - name: Install Serverless Framework v3.x
+        run: npm install -g serverless@3.x
+
+      # Step 5: Configure AWS credentials for Serverless
+      - name: Configure AWS credentials
+        run: |
+          sls config credentials --provider aws --key ${{ secrets.ACCESS_KEY}} --secret ${{ secrets.SECRET_ACCESS_KEY }}
+      # Step 6: Deploy Serverless application
+      - name: Deploy Serverless application
+        run: sls deploy --region ap-south-1 --stage dev
