@@ -46,33 +46,28 @@ resources:
 
   extensions:
     WebAppS3BucketPolicy:
+      Type: AWS::S3::BucketPolicy
       Properties:
+        Bucket: !Ref WebAppS3Bucket
         PolicyDocument:
           Version: "2012-10-17"
           Statement:
             - Effect: Allow
-              Action:
-                - s3:GetObject
-              Resource: !Join
-                - ""
-                - - !GetAtt WebAppS3Bucket.Arn
-                  - "/*"
               Principal:
                 CanonicalUser: !GetAtt OriginAccessIdentity.S3CanonicalUserId
-                AWS: "*"
+              Action: s3:GetObject
+              Resource: !Join [ "", [ !GetAtt WebAppS3Bucket.Arn, "/*" ] ]
+
 
     ApiDistribution:
+      Type: AWS::CloudFront::Distribution
       Properties:
         DistributionConfig:
           Origins:
             - Id: WebApp
               DomainName: !GetAtt WebAppS3Bucket.DomainName
               S3OriginConfig:
-                OriginAccessIdentity: !Join
-                  - /
-                  - - origin-access-identity
-                    - cloudfront
-                    - !Ref OriginAccessIdentity
+                OriginAccessIdentity: !Join [ "/", [ "origin-access-identity", "cloudfront", !Ref OriginAccessIdentity ] ]
           Enabled: true
           HttpVersion: http2
           Comment: Serverless Managed ${self:provider.stage}-${self:service}
