@@ -92,10 +92,6 @@ resources:
               Cookies:
                 Forward: none
             ViewerProtocolPolicy: redirect-to-https
-          ViewerCertificate:
-            AcmCertificateArn: ${self:custom.${self:provider.stage}.certificate_arn}
-            SslSupportMethod: sni-only
-            MinimumProtocolVersion: TLSv1.2_2021
           CustomErrorResponses:
             - ErrorCode: 403
               ResponseCode: 200
