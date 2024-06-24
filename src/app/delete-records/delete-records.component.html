@@ -1,6 +1,3 @@
-<!-- Initially show only the button -->
-<button *ngIf="!res" class="delete-button" (click)="toggleInput()">Delete Record</button>
-
-<!-- Show input field only when 'res' is true (after clicking the button) -->
-<input *ngIf="res" type="text" name="id" [(ngModel)]="id" placeholder="Enter ID" required>
-<button *ngIf="res" (click)="deleteRecord()" class="delete-button">Confirm Delete</button>
+<input type="text" name="id" [(ngModel)]="id" placeholder="Enter ID" required>
+<input type="text" name="name" [(ngModel)]="name" placeholder="Enter name" required>
+<button (click)="deleteRecord()" class="delete-button">Confirm Delete</button>

@@ -14,18 +14,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   ]
 })
 export class GetRecordsComponent {
-  res: boolean = false;
   data: any;
-
   constructor(private crudService: CrudService) {}
-  OnInit(){
+  ngOnInit(){
+    this.data="";
     this.getRecords();
   }
   getRecords(): void {
     this.crudService.getRecords().subscribe(
       (response) => {
         this.data = response;
-        this.res = true;
       },
       (error) => {
         console.error('Error fetching records:', error);
