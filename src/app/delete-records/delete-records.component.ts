@@ -16,26 +16,18 @@ import { CommonModule } from '@angular/common';
 })
 export class DeleteRecordsComponent {
   id: string = '';
-  res: boolean = false;
+  name: string = '';
 
   constructor(private crudService: CrudService) {}
 
-  toggleInput(): void {
-    this.res = true; // Show the input field and confirm button
-  }
-
   deleteRecord(): void {
-    this.crudService.deleteRecord(this.id).subscribe(
+    this.crudService.deleteRecord(this.id, this.name).subscribe(
       (response) => {
         console.log('Record deleted successfully:', response);
         alert('Record deleted successfully');
-        // Handle any additional UI updates if needed
-        this.res = false; // Show the input field and confirm button
-
       },
       (error) => {
         console.error('Error deleting record:', error);
-        // Handle error in UI
       }
     );
   }

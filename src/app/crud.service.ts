@@ -19,10 +19,10 @@ export class CrudService {
   }
 
   updateRecord(id: string, attribute: string, value: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/updateRecords`, { id, attribute, value });
+    return this.http.patch(`${this.apiUrl}/updateRecords`, { id, attribute, value });
   }
 
-  deleteRecord(id: string): Observable<any> {
-    return this.http.request('delete', `${this.apiUrl}/deleteRecords`, { body: { id } });
+  deleteRecord(id: string,name:string): Observable<any> {
+    return this.http.request('delete', `${this.apiUrl}/deleteRecords`, { body: { id,name } });
   }
 }
